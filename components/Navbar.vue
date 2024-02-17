@@ -1,10 +1,10 @@
 <template>
-  <div class="navbar bg-base-100 p-0">
+  <div class="navbar">
     <div class="flex-1">
-      <a class="btn btn-ghost text-xl">Hitung Impianmu</a>
+      <nuxt-link to="/" class="btn text-xl p-0 btn-title">Hitung Impianmu</nuxt-link>
     </div>
     <div class="flex-none">
-      <button class="btn btn-square btn-ghost">
+      <button class="btn btn-square p-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -22,3 +22,33 @@
     </div>
   </div>
 </template>
+
+<style>
+.btn-title {
+  background: none;
+  border: none;
+  color: #2d2d2e;
+  box-shadow: none;
+}
+
+.btn-title:hover {
+  background: none;
+  border: none;
+  color: #2d2d2e;
+  box-shadow: none;
+}
+
+.btn-square {
+  background: none;
+  border: none;
+  color: #2d2d2e;
+  box-shadow: none;
+}
+
+.btn-square:hover {
+  background: none;
+  border: none;
+  color: #2d2d2e;
+  box-shadow: none;
+}
+</style>

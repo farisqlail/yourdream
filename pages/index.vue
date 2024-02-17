@@ -1,8 +1,11 @@
 <template>
+  <Head>
+    <title>Hitung Impianmu</title>
+  </Head>
   <section id="page">
     <Navbar />
     <div class="banner">
-      <img src="~/assets/images/banner.png" alt="" />
+      <img src="~/assets/images/banner.png" class="img-hero" alt="" />
     </div>
 
     <div class="title">
@@ -10,19 +13,19 @@
     </div>
 
     <div class="row-item flex justify-between mt-3">
-      <div class="item">
+      <div class="item" @click="kpr">
         <div class="icon">
           <img src="~/assets/icons/kpr.png" class="w-20" alt="" />
         </div>
         Simulasi KPR
       </div>
-      <div class="item">
+      <div class="item" @click="wedding">
         <div class="icon">
           <img src="~/assets/icons/menikah.png" class="w-20" alt="" />
         </div>
         Menikah
       </div>
-      <div class="item">
+      <div class="item" @click="property">
         <div class="icon">
           <img src="~/assets/icons/properti.png" class="w-20" alt="" />
         </div>
@@ -37,40 +40,31 @@
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 
-export default defineComponent({
+export default {
   component: {
     Navbar,
     Footer,
   },
   setup() {},
-});
+  methods: {
+    kpr() {
+      this.$router.push("/kpr");
+    },
+    wedding() {
+      this.$router.push("/wedding");
+    },
+    property() {
+      this.$router.push("/property");
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-#page {
-  padding-left: 30rem;
-  padding-right: 30rem;
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
-
-  .row-item {
-    .item {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      .icon {
-        background: #004aad;
-        padding: 14px;
-        display: flex;
-        justify-content: center;
-        width: 60%;
-        align-items: center;
-        border-radius: 8px;
-      }
-    }
-  }
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 </style>
