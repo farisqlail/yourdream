@@ -46,13 +46,13 @@
 </template>
 
 <style lang="scss">
-.footer-wrapper {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding-left: 30rem;
-  padding-right: 30rem;
-  color: #2d2d2e;
-}
+// .footer-wrapper {
+//   position: fixed;
+//   left: 0;
+//   bottom: 0;
+//   width: 100%;
+//   padding-left: 30rem;
+//   padding-right: 30rem;
+//   color: #2d2d2e;
+// }
 </style>

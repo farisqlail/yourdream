@@ -31,38 +31,5 @@ body {
   background: #f4f4f4;
   padding-left: 20px;
   padding-right: 20px;
-  height: 100vh; 
-
-  .img-hero {
-    border-radius: 10px;
-  }
-
-  .title {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-    font-size: 18px;
-  }
-
-  .row-item {
-    .item {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-
-      .icon {
-        background: #004aad;
-        padding: 14px;
-        display: flex;
-        justify-content: center;
-        width: 60%;
-        align-items: center;
-        border-radius: 8px;
-      }
-    }
-  }
 }
 </style>
