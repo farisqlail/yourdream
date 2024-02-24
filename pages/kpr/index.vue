@@ -1,7 +1,11 @@
 <template>
+  <Head>
+    <title>Hitung KPR</title>
+  </Head>
   <div>
     <section id="page">
       <NavbarDetail />
+
       <div class="form">
         <!-- Property Price -->
         <div class="form-group flex flex-col gap-4">
@@ -20,7 +24,10 @@
         </div>
 
         <!-- Down Payment -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="propertyPrice !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium"
             >Berapa % yang mau kamu DP (Down Payment)</span
           >
@@ -38,7 +45,10 @@
         </div>
 
         <!-- Monthly Income -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="downPaymentPercentage !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium">Penghasilan bulananmu</span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
@@ -54,7 +64,10 @@
         </div>
 
         <!-- KPR Duration -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="monthlyIncome !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium">Kamu mau KPR berapa lama?</span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
@@ -70,7 +83,10 @@
         </div>
 
         <!-- Bunga Fix -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="kprDuration !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium">Bunga fix</span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
@@ -86,7 +102,10 @@
         </div>
 
         <!-- Period Bunga Fix -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="fixedInterestRate !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium">Periode bunga fix </span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
@@ -102,7 +121,10 @@
         </div>
 
         <!-- Bunga Floating -->
-        <div class="form-group flex flex-col gap-4 mt-4">
+        <div
+          v-if="fixedInterestPeriod !== ''"
+          class="form-group flex flex-col gap-4 mt-4"
+        >
           <span class="font-medium">Bunga floating</span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
@@ -117,53 +139,57 @@
           </label>
         </div>
 
-        <!-- Period Bunga Floating -->
-        <div class="form-group flex flex-col gap-4 mt-4">
-          <span class="font-medium">Periode bunga floating</span>
-          <div class="period-badge">Rp5,600,000</div>
-        </div>
-      </div>
-
-      <div class="btn-group flex flex-col gap-4">
-        <span class="font-medium"
-          >yuhuu, mimpimu sudah mendapatkan strategi</span
+        <div
+          v-if="floatingInterestRate !== ''"
+          class="btn-group flex flex-col gap-4 mt-4"
         >
-        <button class="btn btn-submit" @click="calculateKPR">
-          Lihat Strategimu
-        </button>
+          <span class="font-medium"
+            >yuhuu, mimpimu sudah mendapatkan strategi</span
+          >
+          <button class="btn btn-submit" @click="calculateKPR">
+            Lihat Strategimu
+          </button>
+        </div>
       </div>
 
       <!-- Modal -->
       <dialog id="modalResult" class="modal">
         <div class="modal-box">
-          <h3 class="font-bold text-lg">Hasil Perhitungan KPR</h3>
+          <h3 class="font-bold text-lg">Analisa Hasil Perhitungan KPR</h3>
           <!-- Tampilkan hasil perhitungan KPR di dalam modal -->
           <div class="modal-content">
-            <p>
-              Total bunga KPR yang harus kamu bayarkan adalah
-              <strong>Rp{{ formatCurrency(totalInterest) }}</strong> setara
-              dengan <strong>{{ interestPercentage }}%</strong> dari pokok
-              pinjamanmu.
-            </p>
-            <p>
-              Cicilan KPRmu dalam rentang
-              <strong>{{ installmentRange }}</strong> atau setara dengan
-              <strong>{{ installmentPercentage }}%</strong> dari penghasilan
-              bulananmu.
-            </p>
-            <p>
-              % cicilanmu yang sangat ideal, kamu bisa mempertimbangkan untuk
-              melunasi KPR mu lebih awal. Kamu bisa menambah cicilan bulananmu
-              menjadi <strong>{{ increasedInstallment }}</strong> dan bisa
-              menyelesaikan KPR mu dalam
-              <strong>{{ monthsToFinish }}</strong> bulan /
-              <strong>{{ yearsToFinish }}</strong> tahun.
-            </p>
+            <div class="total-bunga">
+              <p>
+                Total bunga KPR yang harus kamu bayarkan adalah
+                <strong>Rp{{ formatCurrency(totalInterest) }}</strong> setara
+                dengan <strong>{{ interestPercentage }}%</strong> dari pokok
+                pinjamanmu.
+              </p>
+            </div>
+
+            <div class="cicilan-payment">
+              <p>
+                Cicilan KPRmu dalam rentang
+                <strong>{{ installmentRange }}</strong> atau setara dengan
+                <strong>{{ installmentPercentage }}%</strong> dari penghasilan
+                bulananmu.
+              </p>
+            </div>
+            <div class="percent-bunga">
+              <p>
+                % cicilanmu yang sangat ideal, kamu bisa mempertimbangkan untuk
+                melunasi KPR mu lebih awal. Kamu bisa menambah cicilan bulananmu
+                menjadi <strong>{{ increasedInstallment }}</strong> dan bisa
+                menyelesaikan KPR mu dalam
+                <strong>{{ monthsToFinish }}</strong> bulan /
+                <strong>{{ yearsToFinish }}</strong> tahun.
+              </p>
+            </div>
           </div>
           <div class="modal-action">
             <form @submit.prevent="closeModal">
               <!-- if there is a button in form, it will close the modal -->
-              <button type="submit" class="btn">Close</button>
+              <button class="btn">Okey, udah paham strateginya</button>
             </form>
           </div>
         </div>
@@ -327,41 +353,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss">
-.form {
-  .form-group {
-    label {
-      width: 100% !important;
-      background: none;
-    }
-
-    .loan-badge {
-      background: #004aad;
-      width: fit-content;
-      color: #fff;
-      padding: 12px;
-      border-radius: 10px;
-    }
-
-    .period-badge {
-      background: #004aad;
-      width: fit-content;
-      color: #fff;
-      padding: 12px;
-      border-radius: 10px;
-    }
-  }
-}
-
-.btn-group {
-  .btn-submit {
-    border: 1px solid #004aad;
-    color: #004aad;
-  }
-  .btn-submit:hover {
-    background: #004aad;
-    color: #fff;
-  }
-}
-</style>
