@@ -104,7 +104,7 @@ body {
       }
     }
   }
-  
+
   .form {
     .form-group {
       label {
@@ -131,6 +131,9 @@ body {
   }
   
   .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     .btn-submit {
       border: 1px solid #004aad;
       color: #004aad;
