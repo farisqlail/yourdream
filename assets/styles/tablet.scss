@@ -102,36 +102,46 @@ body {
     }
   }
 
-  .form {
-    .form-group {
-      label {
-        width: 100% !important;
-        background: none;
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+  .form-group {
+    .input-custom {
+      width: 100% !important;
+      background: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: transparent;
+      border: 1px solid #004aad;
+      padding: 10px;
+      border-radius: 10px;
+
+      input {
+        background-color: transparent;
+        width: 100%;
       }
-  
-      .loan-badge {
-        background: #004aad;
-        width: fit-content;
-        color: #fff;
-        padding: 12px;
-        border-radius: 10px;
-      }
-  
-      .period-badge {
-        background: #004aad;
-        width: fit-content;
-        color: #fff;
-        padding: 12px;
-        border-radius: 10px;
+      input:focus {
+        outline: none;
       }
     }
+
+    .loan-badge {
+      background: #004aad;
+      width: fit-content;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .period-badge {
+      background: #004aad;
+      width: fit-content;
+      color: #fff;
+      padding: 12px;
+      border-radius: 10px;
+    }
   }
-  
+
   .btn-group {
     display: flex;
     flex-direction: column;
@@ -145,11 +155,11 @@ body {
       color: #fff;
     }
   }
-  
+
   #modalResult {
     .modal-box {
       background-color: #fff;
-  
+
       .total-bunga {
         padding: 20px;
         background-color: #e6e6e6;
@@ -157,20 +167,20 @@ body {
         margin-bottom: 10px;
         margin-top: 10px;
       }
-  
+
       .cicilan-payment {
         padding: 20px;
         background-color: #e6e6e6;
         border-radius: 10px;
         margin-bottom: 10px;
       }
-  
+
       .percent-bunga {
         padding: 20px;
         background-color: #e6e6e6;
         border-radius: 10px;
       }
-  
+
       .modal-action {
         form {
           width: 100%;
@@ -184,4 +194,3 @@ body {
     }
   }
 }
-
