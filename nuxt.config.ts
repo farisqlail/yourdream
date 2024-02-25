@@ -7,7 +7,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
-    '@vite-pwa/nuxt'
+    '@vite-pwa/nuxt',
+    'nuxt-swiper'
   ],
 
   googleFonts: {

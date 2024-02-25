@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <!-- <div> -->
     <NuxtPwaManifest/>
     <NuxtPage />
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
