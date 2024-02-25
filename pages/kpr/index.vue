@@ -3,7 +3,7 @@
     <title>Hitung KPR</title>
   </Head>
   <div>
-    <section id="page">
+    <section id="page-index">
       <NavbarDetail />
 
       <div class="form">
