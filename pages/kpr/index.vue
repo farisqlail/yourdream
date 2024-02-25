@@ -6,112 +6,85 @@
     <section id="page">
       <NavbarDetail />
 
-      <div class="form">
-        <!-- Property Price -->
-        <div class="form-group">
-          <span class="font-medium">Harga properti impianmu saat ini </span>
-          <div
-            class="input input-bordered input-info"
-          >
-            Rp
-            <input
-              v-model="formattedPropertyPrice"
-              type="text"
-              class="grow"
-              placeholder="800.000.000"
-            />
-          </div>
+      <!-- Property Price -->
+      <div class="form-group">
+        <span class="font-medium">Harga properti impianmu saat ini </span>
+        <div class="input input-bordered input-info">
+          Rp
+          <input
+            v-model="formattedPropertyPrice"
+            type="text"
+            class="grow"
+            placeholder="800.000.000"
+          />
         </div>
+      </div>
 
-        <!-- Down Payment -->
-        <div
-          v-if="propertyPrice !== ''"
-          class="form-group"
+      <!-- Down Payment -->
+      <div v-if="propertyPrice !== ''" class="form-group">
+        <span class="font-medium"
+          >Berapa % yang mau kamu DP (Down Payment)</span
         >
-          <span class="font-medium"
-            >Berapa % yang mau kamu DP (Down Payment)</span
-          >
-          <div
-            class="input input-bordered input-info"
-          >
-            <input
-              v-model="downPaymentPercentage"
-              type="text"
-              class="grow"
-              placeholder="30"
-            />
-            %
-          </div>
+        <div class="input input-bordered input-info">
+          <input
+            v-model="downPaymentPercentage"
+            type="text"
+            class="grow"
+            placeholder="30"
+          />
+          %
         </div>
+      </div>
 
-        <!-- KPR Duration -->
-        <div
-          v-if="downPaymentPercentage !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Kamu mau KPR berapa lama?</span>
-          <div
-            class="input input-bordered input-info"
-          >
-            <input
-              v-model="kprDuration"
-              type="text"
-              class="grow"
-              placeholder="24"
-            />
-            bulan
-          </div>
+      <!-- KPR Duration -->
+      <div v-if="downPaymentPercentage !== ''" class="form-group">
+        <span class="font-medium">Kamu mau KPR berapa lama?</span>
+        <div class="input input-bordered input-info">
+          <input
+            v-model="kprDuration"
+            type="text"
+            class="grow"
+            placeholder="24"
+          />
+          bulan
         </div>
+      </div>
 
-        <!-- Bunga Fix -->
-        <div
-          v-if="kprDuration !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Bunga Tetap</span>
-          <div
-            class="input input-bordered input-info"
-          >
-            <input
-              v-model="fixedInterestRate"
-              type="text"
-              class="grow"
-              placeholder="5"
-            />
-            %
-          </div>
+      <!-- Bunga Fix -->
+      <div v-if="kprDuration !== ''" class="form-group">
+        <span class="font-medium">Bunga Tetap</span>
+        <div class="input input-bordered input-info">
+          <input
+            v-model="fixedInterestRate"
+            type="text"
+            class="grow"
+            placeholder="5"
+          />
+          %
         </div>
+      </div>
 
-        <!-- Bunga Floating -->
-        <div
-          v-if="fixedInterestRate !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Bunga floating</span>
-          <div
-            class="input input-bordered input-info"
-          >
-            <input
-              v-model="floatingInterestRate"
-              type="text"
-              class="grow"
-              placeholder="3"
-            />
-            %
-          </div>
+      <!-- Bunga Floating -->
+      <div v-if="fixedInterestRate !== ''" class="form-group">
+        <span class="font-medium">Bunga floating</span>
+        <div class="input input-bordered input-info">
+          <input
+            v-model="floatingInterestRate"
+            type="text"
+            class="grow"
+            placeholder="3"
+          />
+          %
         </div>
+      </div>
 
-        <div
-          v-if="floatingInterestRate !== ''"
-          class="btn-group"
+      <div v-if="floatingInterestRate !== ''" class="btn-group">
+        <span class="font-medium"
+          >yuhuu, mimpimu sudah mendapatkan strategi</span
         >
-          <span class="font-medium"
-            >yuhuu, mimpimu sudah mendapatkan strategi</span
-          >
-          <button class="btn btn-submit" @click="calculateKPR">
-            Lihat Strategimu
-          </button>
-        </div>
+        <button class="btn btn-submit" @click="calculateKPR">
+          Lihat Strategimu
+        </button>
       </div>
 
       <!-- Modal -->
@@ -132,14 +105,16 @@
             <div class="cicilan-payment">
               <p>
                 Cicilan Pokok KPRmu
-                <strong>Rp{{ formatCurrency(principalInstallments) }}</strong> atau setara dengan
+                <strong>Rp{{ formatCurrency(principalInstallments) }}</strong>
+                atau setara dengan
                 <strong>{{ installmentPercentage }}%</strong> dari penghasilan
                 bulananmu.
               </p>
             </div>
             <div class="percent-bunga">
               <p>
-                Total Cicilan KPR perbulan kamu menjadi <strong>Rp{{ formatCurrency(totalInstallments) }}</strong>
+                Total Cicilan KPR perbulan kamu menjadi
+                <strong>Rp{{ formatCurrency(totalInstallments) }}</strong>
               </p>
             </div>
           </div>
