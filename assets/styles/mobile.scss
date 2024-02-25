@@ -107,12 +107,12 @@ body {
 
   .form {
     .form-group {
-      label {
+      .input {
         width: 100% !important;
         background: none;
         display: flex;
         align-items: center;
-        // gap: 2px;
+        gap: 2px;
         margin-top: 10px;
         margin-bottom: 10px;
       }

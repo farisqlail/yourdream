@@ -10,7 +10,7 @@
         <!-- Property Price -->
         <div class="form-group">
           <span class="font-medium">Harga properti impianmu saat ini </span>
-          <label
+          <div
             class="input input-bordered input-info"
           >
             Rp
@@ -20,7 +20,7 @@
               class="grow"
               placeholder="800.000.000"
             />
-          </label>
+          </div>
         </div>
 
         <!-- Down Payment -->
@@ -31,7 +31,7 @@
           <span class="font-medium"
             >Berapa % yang mau kamu DP (Down Payment)</span
           >
-          <label
+          <div
             class="input input-bordered input-info"
           >
             <input
@@ -41,7 +41,7 @@
               placeholder="30"
             />
             %
-          </label>
+          </div>
         </div>
 
         <!-- KPR Duration -->
@@ -50,7 +50,7 @@
           class="form-group"
         >
           <span class="font-medium">Kamu mau KPR berapa lama?</span>
-          <label
+          <div
             class="input input-bordered input-info"
           >
             <input
@@ -60,7 +60,7 @@
               placeholder="24"
             />
             bulan
-          </label>
+          </div>
         </div>
 
         <!-- Bunga Fix -->
@@ -69,7 +69,7 @@
           class="form-group"
         >
           <span class="font-medium">Bunga Tetap</span>
-          <label
+          <div
             class="input input-bordered input-info"
           >
             <input
@@ -79,7 +79,7 @@
               placeholder="5"
             />
             %
-          </label>
+          </div>
         </div>
 
         <!-- Bunga Floating -->
@@ -88,7 +88,7 @@
           class="form-group"
         >
           <span class="font-medium">Bunga floating</span>
-          <label
+          <div
             class="input input-bordered input-info"
           >
             <input
@@ -98,7 +98,7 @@
               placeholder="3"
             />
             %
-          </label>
+          </div>
         </div>
 
         <div
