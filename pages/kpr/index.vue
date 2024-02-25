@@ -14,7 +14,6 @@
           <input
             v-model="formattedPropertyPrice"
             type="text"
-            class="grow"
             placeholder="800.000.000"
           />
         </div>
@@ -29,7 +28,6 @@
           <input
             v-model="downPaymentPercentage"
             type="text"
-            class="grow"
             placeholder="30"
           />
           %
@@ -43,7 +41,6 @@
           <input
             v-model="kprDuration"
             type="text"
-            class="grow"
             placeholder="24"
           />
           bulan
@@ -57,7 +54,6 @@
           <input
             v-model="fixedInterestRate"
             type="text"
-            class="grow"
             placeholder="5"
           />
           %
@@ -71,7 +67,6 @@
           <input
             v-model="floatingInterestRate"
             type="text"
-            class="grow"
             placeholder="3"
           />
           %
