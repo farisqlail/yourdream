@@ -9,7 +9,7 @@
       <!-- Property Price -->
       <div class="form-group">
         <span class="font-medium">Harga properti impianmu saat ini </span>
-        <div class="input input-bordered input-info">
+        <div class="input">
           Rp
           <input
             v-model="formattedPropertyPrice"
