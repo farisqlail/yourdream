@@ -6,6 +6,19 @@
     <section id="page">
       <NavbarDetail />
 
+      <!-- Property Price -->
+      <div class="form-group">
+        <span class="font-medium">Harga properti impianmu saat ini </span>
+        <div class="input input-bordered input-info">
+          Rp
+          <input
+            v-model="formattedPropertyPrice"
+            type="text"
+            placeholder="800.000.000"
+          />
+        </div>
+      </div>
+
 
       <div v-if="floatingInterestRate !== ''" class="btn-group">
         <span class="font-medium"
