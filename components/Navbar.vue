@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="flex-1">
-      <nuxt-link to="/" class="btn text-xl p-0 btn-title">Hitung Impianmu</nuxt-link>
+      <nuxt-link to="/" class="btn text-xl p-0 btn-title">Your Dream</nuxt-link>
     </div>
     <div class="flex-none">
       <button class="btn btn-square p-0">
@@ -29,6 +29,7 @@
   border: none;
   color: #2d2d2e;
   box-shadow: none;
+  font-size: 20px;
 }
 
 .btn-title:hover {

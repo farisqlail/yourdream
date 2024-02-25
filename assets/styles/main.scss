@@ -91,10 +91,19 @@ body {
       justify-content: center;
       align-items: center;
       gap: 10px;
-      cursor: pointer;
-
+      
       .icon {
+        cursor: pointer;
         background: #004aad;
+        padding: 14px;
+        display: flex;
+        justify-content: center;
+        width: 60%;
+        align-items: center;
+        border-radius: 8px;
+      }
+      .icon-disabled {
+        background: #868686;
         padding: 14px;
         display: flex;
         justify-content: center;
@@ -115,7 +124,7 @@ body {
       margin-top: 10px;
       margin-bottom: 10px;
       background-color: transparent;
-      border: 1px solid #004aad;
+      border: 2px solid #004aad;
       padding: 10px;
       border-radius: 10px;
 

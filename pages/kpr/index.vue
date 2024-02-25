@@ -101,14 +101,7 @@
               <p>
                 Cicilan Pokok KPRmu
                 <strong>Rp{{ formatCurrency(principalInstallments) }}</strong>
-                atau setara dengan
-                <strong>{{ installmentPercentage }}%</strong> dari penghasilan
-                bulananmu.
-              </p>
-            </div>
-            <div class="percent-bunga">
-              <p>
-                Total Cicilan KPR perbulan kamu menjadi
+                dan total Cicilan KPR perbulan kamu menjadi
                 <strong>Rp{{ formatCurrency(totalInstallments) }}</strong>
               </p>
             </div>

@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <title>Hitung Impianmu</title>
+    <title>Your Dream</title>
   </Head>
   <section id="page">
     <Navbar />
@@ -19,14 +19,14 @@
         </div>
         Simulasi KPR
       </div>
-      <div class="item" @click="wedding">
-        <div class="icon">
+      <div class="item">
+        <div class="icon-disabled">
           <img src="~/assets/icons/menikah.png" class="w-20" alt="" />
         </div>
         Menikah
       </div>
-      <div class="item" @click="property">
-        <div class="icon">
+      <div class="item">
+        <div class="icon-disabled">
           <img src="~/assets/icons/properti.png" class="w-20" alt="" />
         </div>
         DP Properti
