@@ -18,7 +18,7 @@
               v-model="formattedPropertyPrice"
               type="text"
               class="grow"
-              placeholder="8.000.000"
+              placeholder="800.000.000"
             />
           </label>
         </div>
@@ -44,28 +44,9 @@
           </label>
         </div>
 
-        <!-- Monthly Income -->
-        <div
-          v-if="downPaymentPercentage !== ''"
-          class="form-group flex flex-col gap-4 mt-4"
-        >
-          <span class="font-medium">Penghasilan bulananmu</span>
-          <label
-            class="input input-bordered input-info flex items-center gap-2"
-          >
-            Rp
-            <input
-              v-model="formattedmonthlyIncome"
-              type="text"
-              class="grow"
-              placeholder="6.000.000"
-            />
-          </label>
-        </div>
-
         <!-- KPR Duration -->
         <div
-          v-if="monthlyIncome !== ''"
+          v-if="downPaymentPercentage !== ''"
           class="form-group flex flex-col gap-4 mt-4"
         >
           <span class="font-medium">Kamu mau KPR berapa lama?</span>
@@ -87,7 +68,7 @@
           v-if="kprDuration !== ''"
           class="form-group flex flex-col gap-4 mt-4"
         >
-          <span class="font-medium">Bunga fix</span>
+          <span class="font-medium">Bunga Tetap</span>
           <label
             class="input input-bordered input-info flex items-center gap-2"
           >
@@ -95,34 +76,15 @@
               v-model="fixedInterestRate"
               type="text"
               class="grow"
-              placeholder="25"
+              placeholder="5"
             />
             %
           </label>
         </div>
 
-        <!-- Period Bunga Fix -->
-        <div
-          v-if="fixedInterestRate !== ''"
-          class="form-group flex flex-col gap-4 mt-4"
-        >
-          <span class="font-medium">Periode bunga fix </span>
-          <label
-            class="input input-bordered input-info flex items-center gap-2"
-          >
-            <input
-              v-model="fixedInterestPeriod"
-              type="text"
-              class="grow"
-              placeholder="2"
-            />
-            bulan
-          </label>
-        </div>
-
         <!-- Bunga Floating -->
         <div
-          v-if="fixedInterestPeriod !== ''"
+          v-if="fixedInterestRate !== ''"
           class="form-group flex flex-col gap-4 mt-4"
         >
           <span class="font-medium">Bunga floating</span>
@@ -169,20 +131,15 @@
 
             <div class="cicilan-payment">
               <p>
-                Cicilan KPRmu dalam rentang
-                <strong>{{ installmentRange }}</strong> atau setara dengan
+                Cicilan Pokok KPRmu
+                <strong>Rp{{ formatCurrency(principalInstallments) }}</strong> atau setara dengan
                 <strong>{{ installmentPercentage }}%</strong> dari penghasilan
                 bulananmu.
               </p>
             </div>
             <div class="percent-bunga">
               <p>
-                % cicilanmu yang sangat ideal, kamu bisa mempertimbangkan untuk
-                melunasi KPR mu lebih awal. Kamu bisa menambah cicilan bulananmu
-                menjadi <strong>{{ increasedInstallment }}</strong> dan bisa
-                menyelesaikan KPR mu dalam
-                <strong>{{ monthsToFinish }}</strong> bulan /
-                <strong>{{ yearsToFinish }}</strong> tahun.
+                Total Cicilan KPR perbulan kamu menjadi <strong>Rp{{ formatCurrency(totalInstallments) }}</strong>
               </p>
             </div>
           </div>
@@ -221,6 +178,8 @@ export default defineComponent({
       increasedInstallment: 0,
       monthsToFinish: 0,
       yearsToFinish: 0,
+      principalInstallments: 0,
+      totalInstallments: 0,
 
       // Data dari form
       propertyPrice: "",
@@ -293,58 +252,29 @@ export default defineComponent({
         this.floatingInterestRate.replace(/[^0-9.]/g, "")
       );
 
+      const perYears = kprDuration / 12;
+
       // Hitung jumlah pokok pinjaman
       const loanAmount = propertyPrice * (1 - downPaymentPercentage / 100);
 
       // Hitung total bunga KPR dengan bunga tetap
       const totalFixedInterest =
-        (loanAmount * fixedInterestRate * fixedInterestPeriod) / 100;
+        (((loanAmount * fixedInterestRate) / 100) * perYears) / kprDuration;
 
-      // Hitung total bunga KPR dengan bunga mengambang (jika ada)
-      const totalFloatingInterest =
-        (loanAmount *
-          floatingInterestRate *
-          (kprDuration - fixedInterestPeriod)) /
-        100;
+      // Hitung percent dari bunga KPR tetap
+      const interestPercentage = (totalFixedInterest / loanAmount) * 100;
 
-      // Total bunga KPR
-      const totalInterest = totalFixedInterest + totalFloatingInterest;
+      //Hitung Cicilan pokok KPR
+      const principalInstallments = loanAmount / kprDuration;
 
-      // Persentase bunga KPR terhadap pokok pinjaman
-      const interestPercentage = (totalInterest / loanAmount) * 100;
-
-      // Rentang cicilan bulanan
-      const totalMonths = kprDuration * 12;
-      const monthlyInstallment = loanAmount / totalMonths;
-
-      // Cicilan minimum
-      const minInstallment = monthlyInstallment + totalInterest / totalMonths;
-      const maxInstallment = minInstallment * 2;
-
-      // Persentase cicilan KPR terhadap penghasilan bulanan
-      const installmentPercentage = (minInstallment / monthlyIncome) * 100;
-
-      // Cicilan yang sangat ideal
-      const idealInstallmentMin = monthlyInstallment * 1.5;
-      const idealInstallmentMax = monthlyInstallment * 2;
-      const idealInstallmentRange = `Rp${this.formatCurrency(
-        idealInstallmentMin.toFixed(2)
-      )} - Rp${this.formatCurrency(idealInstallmentMax.toFixed(2))}`;
-
-      // Waktu untuk melunasi KPR
-      const monthsToFinish = Math.ceil(loanAmount / idealInstallmentMin / 12);
-      const yearsToFinish = Math.floor(monthsToFinish / 12);
+      // Hitung total cicilan KPR perbulan
+      const totalInstallments = principalInstallments + totalFixedInterest;
 
       // Set data hasil perhitungan
-      this.totalInterest = totalInterest.toFixed(2);
-      this.interestPercentage = interestPercentage.toFixed(1); // Dibulatkan menjadi 1 angka di belakang koma
-      this.installmentRange = `Rp${this.formatCurrency(
-        minInstallment.toFixed(2)
-      )} - Rp${this.formatCurrency(maxInstallment.toFixed(2))}`;
-      this.installmentPercentage = installmentPercentage.toFixed(2);
-      this.increasedInstallment = idealInstallmentRange;
-      this.monthsToFinish = monthsToFinish;
-      this.yearsToFinish = yearsToFinish;
+      this.totalInterest = totalFixedInterest;
+      this.interestPercentage = interestPercentage.toFixed(2);
+      this.principalInstallments = principalInstallments;
+      this.totalInstallments = totalInstallments;
 
       // Tampilkan hasil perhitungan
       this.openModal();
