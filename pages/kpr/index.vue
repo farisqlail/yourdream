@@ -11,7 +11,7 @@
         <div class="form-group">
           <span class="font-medium">Harga properti impianmu saat ini </span>
           <label
-            class="input input-bordered input-info flex items-center gap-2 mt-3 mb-3"
+            class="input input-bordered input-info"
           >
             Rp
             <input
@@ -23,83 +23,6 @@
           </label>
         </div>
 
-        <!-- Down Payment -->
-        <div
-          v-if="propertyPrice !== ''"
-          class="form-group"
-        >
-          <span class="font-medium"
-            >Berapa % yang mau kamu DP (Down Payment)</span
-          >
-          <label
-            class="input input-bordered input-info flex items-center gap-2 mt-3 mb-3"
-          >
-            <input
-              v-model="downPaymentPercentage"
-              type="text"
-              class="grow"
-              placeholder="30"
-            />
-            %
-          </label>
-        </div>
-
-        <!-- KPR Duration -->
-        <div
-          v-if="downPaymentPercentage !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Kamu mau KPR berapa lama?</span>
-          <label
-            class="input input-bordered input-info flex items-center gap-2 mt-3 mb-3"
-          >
-            <input
-              v-model="kprDuration"
-              type="text"
-              class="grow"
-              placeholder="24"
-            />
-            bulan
-          </label>
-        </div>
-
-        <!-- Bunga Fix -->
-        <div
-          v-if="kprDuration !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Bunga Tetap</span>
-          <label
-            class="input input-bordered input-info flex items-center gap-2 mt-3 mb-3"
-          >
-            <input
-              v-model="fixedInterestRate"
-              type="text"
-              class="grow"
-              placeholder="5"
-            />
-            %
-          </label>
-        </div>
-
-        <!-- Bunga Floating -->
-        <div
-          v-if="fixedInterestRate !== ''"
-          class="form-group"
-        >
-          <span class="font-medium">Bunga floating</span>
-          <label
-            class="input input-bordered input-info flex items-center gap-2 mt-3 mb-3"
-          >
-            <input
-              v-model="floatingInterestRate"
-              type="text"
-              class="grow"
-              placeholder="3"
-            />
-            %
-          </label>
-        </div>
 
         <div
           v-if="floatingInterestRate !== ''"
