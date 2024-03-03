@@ -19,17 +19,26 @@
         </div>
         Simulasi KPR
       </div>
-      <div class="item">
-        <div class="icon-disabled">
-          <img src="~/assets/icons/menikah.png" class="w-20" alt="" />
+      <div class="item" @click="stuff">
+        <div class="icon">
+          <img src="~/assets/icons/monitor.png" class="w-20" alt="" />
         </div>
-        Menikah
+        Barang
       </div>
       <div class="item">
         <div class="icon-disabled">
           <img src="~/assets/icons/properti.png" class="w-20" alt="" />
         </div>
         DP Properti
+      </div>
+    </div>
+
+    <div class="row-item flex justify-between mt-3">
+      <div class="item">
+        <div class="icon-disabled">
+          <img src="~/assets/icons/menikah.png" class="w-20" alt="" />
+        </div>
+        Menikah
       </div>
     </div>
 
@@ -143,6 +152,9 @@ export default {
     },
     property() {
       this.$router.push("/property");
+    },
+    stuff() {
+      this.$router.push("/stuff");
     },
   },
 };
