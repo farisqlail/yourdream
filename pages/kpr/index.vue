@@ -25,11 +25,7 @@
           >Berapa % yang mau kamu DP (Down Payment)</span
         >
         <div class="input-custom">
-          <input
-            v-model="downPaymentPercentage"
-            type="text"
-            placeholder="30"
-          />
+          <input v-model="downPaymentPercentage" type="text" placeholder="30" />
           %
         </div>
       </div>
@@ -38,11 +34,7 @@
       <div v-if="downPaymentPercentage !== ''" class="form-group">
         <span class="font-medium">Kamu mau KPR berapa lama?</span>
         <div class="input-custom">
-          <input
-            v-model="kprDuration"
-            type="text"
-            placeholder="24"
-          />
+          <input v-model="kprDuration" type="text" placeholder="24" />
           bulan
         </div>
       </div>
@@ -51,11 +43,7 @@
       <div v-if="kprDuration !== ''" class="form-group">
         <span class="font-medium">Bunga Tetap</span>
         <div class="input-custom">
-          <input
-            v-model="fixedInterestRate"
-            type="text"
-            placeholder="5"
-          />
+          <input v-model="fixedInterestRate" type="text" placeholder="5" />
           %
         </div>
       </div>
@@ -64,11 +52,7 @@
       <div v-if="fixedInterestRate !== ''" class="form-group">
         <span class="font-medium">Bunga floating</span>
         <div class="input-custom">
-          <input
-            v-model="floatingInterestRate"
-            type="text"
-            placeholder="3"
-          />
+          <input v-model="floatingInterestRate" type="text" placeholder="3" />
           %
         </div>
       </div>
@@ -201,18 +185,9 @@ export default defineComponent({
       const downPaymentPercentage = parseFloat(
         this.downPaymentPercentage.replace(/[^0-9]/g, "")
       );
-      const monthlyIncome = parseFloat(
-        this.formattedmonthlyIncome.replace(/[^0-9]/g, "")
-      );
       const kprDuration = parseInt(this.kprDuration.replace(/[^0-9]/g, ""));
       const fixedInterestRate = parseFloat(
         this.fixedInterestRate.replace(/[^0-9.]/g, "")
-      );
-      const fixedInterestPeriod = parseInt(
-        this.fixedInterestPeriod.replace(/[^0-9]/g, "")
-      );
-      const floatingInterestRate = parseFloat(
-        this.floatingInterestRate.replace(/[^0-9.]/g, "")
       );
 
       const perYears = kprDuration / 12;
@@ -222,16 +197,16 @@ export default defineComponent({
 
       // Hitung total bunga KPR dengan bunga tetap
       const totalFixedInterest =
-        (((loanAmount * fixedInterestRate) / 100) * perYears) / kprDuration;
+         Math.round((((loanAmount * fixedInterestRate) / 100) * perYears) / kprDuration);
 
       // Hitung percent dari bunga KPR tetap
       const interestPercentage = (totalFixedInterest / loanAmount) * 100;
 
       //Hitung Cicilan pokok KPR
-      const principalInstallments = loanAmount / kprDuration;
+      const principalInstallments =  Math.round(loanAmount / kprDuration);
 
       // Hitung total cicilan KPR perbulan
-      const totalInstallments = principalInstallments + totalFixedInterest;
+      const totalInstallments =  Math.round(principalInstallments + totalFixedInterest);
 
       // Set data hasil perhitungan
       this.totalInterest = totalFixedInterest;
