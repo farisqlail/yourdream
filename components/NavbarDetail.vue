@@ -7,7 +7,7 @@
     </div>
 
     <div class="title text-center">
-        <span class="font-semibold">Simulasi KPR</span>
+        <span class="font-semibold">{{title}}</span>
     </div>
 
     <div>
@@ -29,6 +29,18 @@
     </div>
   </div>
 </template>
+
+
+<script>
+import { defineComponent } from '@vue/composition-api'
+
+export default defineComponent({
+  props: {
+    title: String,
+  }
+})
+</script>
+
 
 <style>
 .btn-title {

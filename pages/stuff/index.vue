@@ -1,7 +1,7 @@
 <template>
   <div>
     <section id="page">
-      <NavbarDetail />
+      <NavbarDetail :title="titelNav" />
 
       <!-- Input Price -->
       <div class="form-group">
@@ -121,6 +121,7 @@ export default defineComponent({
       showResults: false,
       targetBulan: "",
       annualInterestRate: "",
+      titelNav: "Barang Impian"
     };
   },
   computed: {

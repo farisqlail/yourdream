@@ -4,7 +4,7 @@
   </Head>
   <div>
     <section id="page">
-      <NavbarDetail />
+      <NavbarDetail :title="titelNav" />
 
       <!-- Property Price -->
       <div class="form-group">
@@ -136,6 +136,7 @@ export default defineComponent({
       fixedInterestRate: "",
       fixedInterestPeriod: "",
       floatingInterestRate: "",
+      titelNav: "Simulasi KPR"
     };
   },
   computed: {
