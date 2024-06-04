@@ -2,7 +2,7 @@
   <Head>
     <title>Hitung KPR</title>
   </Head>
-  <div>
+  <div class="frame">
     <section id="page">
       <NavbarDetail :title="titelNav" />
 

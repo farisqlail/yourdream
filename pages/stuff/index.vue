@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="frame">
     <section id="page">
       <NavbarDetail :title="titelNav" />
 
