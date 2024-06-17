@@ -30,8 +30,21 @@
         </div>
       </div>
 
-      <!-- KPR Duration -->
+      <!-- Monthly Income -->
       <div v-if="downPaymentPercentage !== ''" class="form-group">
+        <span class="font-medium">Gaji Bulanan Kamu</span>
+        <div class="input-custom">
+          Rp
+          <input
+            v-model="formattedMonthlyIncome"
+            type="text"
+            placeholder="10.000.000"
+          />
+        </div>
+      </div>
+
+      <!-- KPR Duration -->
+      <div v-if="formattedMonthlyIncome !== ''" class="form-group">
         <span class="font-medium">Kamu mau KPR berapa lama?</span>
         <div class="input-custom">
           <input v-model="kprDuration" type="text" placeholder="24" />
@@ -72,6 +85,11 @@
           <h3 class="font-bold text-lg">Analisa Hasil Perhitungan KPR</h3>
           <!-- Tampilkan hasil perhitungan KPR di dalam modal -->
           <div class="modal-content">
+            <!-- Alert -->
+            <div v-if="alertMessage" :class="['alert', alertType]">
+              <span>{{ alertMessage }}</span>
+            </div>
+
             <div class="total-bunga">
               <p>
                 Total bunga KPR yang harus kamu bayarkan adalah
@@ -93,7 +111,10 @@
           <div class="modal-action">
             <form @submit.prevent="closeModal">
               <!-- if there is a button in form, it will close the modal -->
-              <button class="btn">Okey, udah paham strateginya</button>
+              <button class="btn-outline">Okey, udah paham strateginya</button>
+              <button class="btn" @click="saveStrategy">
+                Simpan Strategiku
+              </button>
             </form>
           </div>
         </div>
@@ -136,7 +157,11 @@ export default defineComponent({
       fixedInterestRate: "",
       fixedInterestPeriod: "",
       floatingInterestRate: "",
-      titelNav: "Simulasi KPR"
+      titelNav: "Simulasi KPR",
+
+      // Alert
+      alertMessage: "",
+      alertType: "",
     };
   },
   computed: {
@@ -148,6 +173,17 @@ export default defineComponent({
         // Menghapus karakter non-digit dari nilai input
         const parsedValue = value.replace(/\D/g, "");
         this.propertyPrice = parseInt(parsedValue);
+      },
+    },
+
+    formattedMonthlyIncome: {
+      get() {
+        return this.formatCurrency(this.monthlyIncome);
+      },
+      set(value) {
+        // Menghapus karakter non-digit dari nilai input
+        const parsedValue = value.replace(/\D/g, "");
+        this.monthlyIncome = parseInt(parsedValue);
       },
     },
 
@@ -177,7 +213,6 @@ export default defineComponent({
       let modal = document.getElementById("modalResult");
       modal.close();
     },
-
     calculateKPR() {
       // Konversi data dari input string menjadi angka jika diperlukan
       const propertyPrice = parseFloat(
@@ -185,6 +220,9 @@ export default defineComponent({
       );
       const downPaymentPercentage = parseFloat(
         this.downPaymentPercentage.replace(/[^0-9]/g, "")
+      );
+      const monthlyIncome = parseFloat(
+        this.formattedMonthlyIncome.replace(/[^0-9]/g, "")
       );
       const kprDuration = parseInt(this.kprDuration.replace(/[^0-9]/g, ""));
       const fixedInterestRate = parseFloat(
@@ -197,17 +235,20 @@ export default defineComponent({
       const loanAmount = propertyPrice * (1 - downPaymentPercentage / 100);
 
       // Hitung total bunga KPR dengan bunga tetap
-      const totalFixedInterest =
-         Math.round((((loanAmount * fixedInterestRate) / 100) * perYears) / kprDuration);
+      const totalFixedInterest = Math.round(
+        (((loanAmount * fixedInterestRate) / 100) * perYears) / kprDuration
+      );
 
       // Hitung percent dari bunga KPR tetap
       const interestPercentage = (totalFixedInterest / loanAmount) * 100;
 
-      //Hitung Cicilan pokok KPR
-      const principalInstallments =  Math.round(loanAmount / kprDuration);
+      // Hitung Cicilan pokok KPR
+      const principalInstallments = Math.round(loanAmount / kprDuration);
 
       // Hitung total cicilan KPR perbulan
-      const totalInstallments =  Math.round(principalInstallments + totalFixedInterest);
+      const totalInstallments = Math.round(
+        principalInstallments + totalFixedInterest
+      );
 
       // Set data hasil perhitungan
       this.totalInterest = totalFixedInterest;
@@ -215,9 +256,45 @@ export default defineComponent({
       this.principalInstallments = principalInstallments;
       this.totalInstallments = totalInstallments;
 
+      // Periksa apakah monthlyIncome mendekati atau melebihi totalInstallments
+      if (monthlyIncome > totalInstallments) {
+        this.alertMessage =
+          "Gaji bulanan Anda cukup untuk membayar cicilan KPR.";
+        this.alertType = "alert-green";
+      } else if (monthlyIncome * 0.8 <= totalInstallments) {
+        this.alertMessage =
+          "Gaji bulanan Anda hampir tidak cukup untuk membayar cicilan KPR.";
+        this.alertType = "alert-red";
+      } else {
+        this.alertMessage = "";
+        this.alertType = "";
+      }
+
       // Tampilkan hasil perhitungan
       this.openModal();
       this.showResults = true;
+    },
+    saveStrategy() {
+      const dataInputKpr = {
+        propertyPrice: this.propertyPrice,
+        downPaymentPercentage: this.downPaymentPercentage,
+        monthlyIncome: this.monthlyIncome,
+        kprDuration: this.kprDuration,
+        fixedInterestRate: this.fixedInterestRate,
+        fixedInterestPeriod: this.fixedInterestPeriod,
+        floatingInterestRate: this.floatingInterestRate,
+      };
+
+      const resultDataKpr = {
+        totalInstallments: this.totalInstallments,
+        principalInstallments: this.principalInstallments,
+        totalInterest: this.totalInterest,
+        interestPercentage: this.interestPercentage
+      }
+
+      localStorage.setItem("dataInputKpr", JSON.stringify(dataInputKpr));
+      localStorage.setItem("resultDataKpr", JSON.stringify(resultDataKpr));
+      
     },
   },
 });
