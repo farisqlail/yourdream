@@ -28,47 +28,11 @@ body {
   }
 }
 
-// .carousel {
-//   display: flex;
-//   overflow-x: auto; /* Atau overflow-x: scroll; */
-//   scroll-snap-type: x mandatory;
-//   -webkit-overflow-scrolling: touch;
-//   height: auto;
-
-//   .carousel-item {
-//     flex: 0 0 auto;
-//     width: 300px; /* Atur lebar sesuai kebutuhan */
-//     scroll-snap-align: center;
-
-//     .card {
-//       background-color: transparent;
-//       width: 100%;
-//       img {
-//         border-radius: 10px;
-//         object-fit: contain;
-//       }
-//       .card-body {
-//         padding: 10px;
-//         span {
-//           font-size: 14px;
-//           font-weight: 600;
-//           color: #2d2d2e;
-//         }
-//       }
-//     }
-//   }
-
-//   /* Tambahan untuk pengaturan margin antar item */
-//   .carousel-item + .carousel-item {
-//     margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
-//   }
-// }
-
 .frame {
   display: flex;
   justify-content: center;
   width: 100%;
-  
+
   #page {
     display: flex;
     flex-direction: column;
@@ -81,18 +45,54 @@ body {
     position: relative;
     width: 480px;
     max-width: 480px;
-  
+
+    .carousel {
+      display: flex;
+      overflow-x: auto; /* Atau overflow-x: scroll; */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      height: auto;
+
+      .carousel-item {
+        flex: 0 0 auto;
+        width: 300px; /* Atur lebar sesuai kebutuhan */
+        scroll-snap-align: center;
+
+        .card {
+          background-color: transparent;
+          width: 100%;
+          img {
+            border-radius: 10px;
+            object-fit: contain;
+          }
+          .card-body {
+            padding: 10px;
+            span {
+              font-size: 14px;
+              font-weight: 600;
+              color: #2d2d2e;
+            }
+          }
+        }
+      }
+
+      /* Tambahan untuk pengaturan margin antar item */
+      .carousel-item + .carousel-item {
+        margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
+      }
+    }
+
     .img-hero {
       border-radius: 10px;
     }
-  
+
     .title {
       font-family: "Poppins", sans-serif;
       font-weight: 600;
       font-style: normal;
       font-size: 18px;
     }
-  
+
     .row-item {
       .item {
         display: flex;
@@ -100,7 +100,7 @@ body {
         justify-content: center;
         align-items: center;
         gap: 10px;
-        
+
         .icon {
           cursor: pointer;
           background: #004aad;
@@ -122,7 +122,7 @@ body {
         }
       }
     }
-  
+
     .form-group {
       .input-custom {
         width: 100% !important;
@@ -136,7 +136,7 @@ body {
         border: 2px solid #004aad;
         padding: 10px;
         border-radius: 10px;
-  
+
         input {
           background-color: transparent;
           width: 100%;
@@ -145,7 +145,7 @@ body {
           outline: none;
         }
       }
-  
+
       .loan-badge {
         background: #004aad;
         width: fit-content;
@@ -153,7 +153,7 @@ body {
         padding: 12px;
         border-radius: 10px;
       }
-  
+
       .period-badge {
         background: #004aad;
         width: fit-content;
@@ -162,7 +162,7 @@ body {
         border-radius: 10px;
       }
     }
-  
+
     .btn-group {
       display: flex;
       flex-direction: column;
@@ -176,7 +176,7 @@ body {
         color: #fff;
       }
     }
-  
+
     #modalResult {
       .modal-box {
         background-color: #fff;
@@ -187,17 +187,17 @@ body {
           border-radius: 5px;
           text-align: center;
         }
-        
+
         .alert-green {
           background-color: #d4edda;
           color: #155724;
         }
-        
+
         .alert-red {
           background-color: #f8d7da;
           color: #721c24;
         }
-  
+
         .total-bunga {
           padding: 20px;
           background-color: #e6e6e6;
@@ -205,20 +205,20 @@ body {
           margin-bottom: 10px;
           margin-top: 10px;
         }
-  
+
         .cicilan-payment {
           padding: 20px;
           background-color: #e6e6e6;
           border-radius: 10px;
           margin-bottom: 10px;
         }
-  
+
         .percent-bunga {
           padding: 20px;
           background-color: #e6e6e6;
           border-radius: 10px;
         }
-  
+
         .modal-action {
           form {
             width: 100%;
@@ -244,4 +244,3 @@ body {
     }
   }
 }
-
