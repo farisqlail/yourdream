@@ -25,41 +25,6 @@ body {
   }
 }
 
-.carousel {
-  display: flex;
-  overflow-x: auto; /* Atau overflow-x: scroll; */
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  height: auto;
-}
-
-.carousel-item {
-  flex: 0 0 auto;
-  width: 300px; /* Atur lebar sesuai kebutuhan */
-  scroll-snap-align: center;
-
-  .card {
-    background-color: transparent;
-    width: 100%;
-    img {
-      border-radius: 10px;
-      object-fit: contain;
-    }
-    .card-body {
-      padding: 10px;
-      span {
-        font-size: 14px;
-        font-weight: 600;
-      }
-    }
-  }
-}
-
-/* Tambahan untuk pengaturan margin antar item */
-.carousel-item + .carousel-item {
-  margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
-}
-
 .frame {
   display: flex;
   justify-content: center;
@@ -76,6 +41,40 @@ body {
     flex-grow: 1;
     position: relative;
     width: 100%;
+
+    .carousel {
+      display: flex;
+      overflow-x: auto; /* Atau overflow-x: scroll; */
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      height: auto;
+      .carousel-item {
+        flex: 0 0 auto;
+        width: 300px; /* Atur lebar sesuai kebutuhan */
+        scroll-snap-align: center;
+
+        .card {
+          background-color: transparent;
+          width: 100%;
+          img {
+            border-radius: 10px;
+            object-fit: contain;
+          }
+          .card-body {
+            padding: 10px;
+            span {
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      /* Tambahan untuk pengaturan margin antar item */
+      .carousel-item + .carousel-item {
+        margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
+      }
+    }
 
     .img-hero {
       border-radius: 10px;
@@ -183,12 +182,12 @@ body {
           border-radius: 5px;
           text-align: center;
         }
-        
+
         .alert-green {
           background-color: #d4edda;
           color: #155724;
         }
-        
+
         .alert-red {
           background-color: #f8d7da;
           color: #721c24;
