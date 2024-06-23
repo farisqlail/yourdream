@@ -28,41 +28,41 @@ body {
   }
 }
 
-.carousel {
-  display: flex;
-  overflow-x: auto; /* Atau overflow-x: scroll; */
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  height: auto;
+// .carousel {
+//   display: flex;
+//   overflow-x: auto; /* Atau overflow-x: scroll; */
+//   scroll-snap-type: x mandatory;
+//   -webkit-overflow-scrolling: touch;
+//   height: auto;
 
-  .carousel-item {
-    flex: 0 0 auto;
-    width: 300px; /* Atur lebar sesuai kebutuhan */
-    scroll-snap-align: center;
+//   .carousel-item {
+//     flex: 0 0 auto;
+//     width: 300px; /* Atur lebar sesuai kebutuhan */
+//     scroll-snap-align: center;
 
-    .card {
-      background-color: transparent;
-      width: 100%;
-      img {
-        border-radius: 10px;
-        object-fit: contain;
-      }
-      .card-body {
-        padding: 10px;
-        span {
-          font-size: 14px;
-          font-weight: 600;
-          color: #2d2d2e;
-        }
-      }
-    }
-  }
+//     .card {
+//       background-color: transparent;
+//       width: 100%;
+//       img {
+//         border-radius: 10px;
+//         object-fit: contain;
+//       }
+//       .card-body {
+//         padding: 10px;
+//         span {
+//           font-size: 14px;
+//           font-weight: 600;
+//           color: #2d2d2e;
+//         }
+//       }
+//     }
+//   }
 
-  /* Tambahan untuk pengaturan margin antar item */
-  .carousel-item + .carousel-item {
-    margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
-  }
-}
+//   /* Tambahan untuk pengaturan margin antar item */
+//   .carousel-item + .carousel-item {
+//     margin-left: 10px; /* Sesuaikan dengan margin yang Anda inginkan */
+//   }
+// }
 
 .frame {
   display: flex;
