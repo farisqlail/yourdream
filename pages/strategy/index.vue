@@ -6,6 +6,11 @@
     <section id="page">
       <NavbarDetail :title="titelNav" />
 
+      <div class="empty-state">
+        <img src="~/assets/images/empty.png" alt="" srcset="" />
+        <span>Belum ada strategi, yuk bikin</span>
+      </div>
+
       <Footer />
       <BottomNav />
     </section>
@@ -26,8 +31,8 @@ export default defineComponent({
   },
   data() {
     return {
-        titelNav: "Strategiku",
-    }
+      titelNav: "Strategiku",
+    };
   },
 });
 </script>
