@@ -49,6 +49,8 @@ body {
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       height: auto;
+      margin-right: -30px;
+      
       .carousel-item {
         flex: 0 0 auto;
         width: 300px; /* Atur lebar sesuai kebutuhan */
