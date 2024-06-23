@@ -42,7 +42,7 @@
           Menikah
         </div>
       </div>
-<!-- 
+
       <div class="row-carousel">
         <div class="title">
           <h5>Kunjungi juga</h5>
@@ -130,7 +130,7 @@
             </nuxt-link>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <Footer />
       <BottomNav />
