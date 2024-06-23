@@ -1,6 +1,6 @@
 <template>
   <Head>
-    <title>Hitung KPR</title>
+    <title>Your Dream - Hitung KPR</title>
   </Head>
   <div class="frame">
     <section id="page">
@@ -121,6 +121,7 @@
       </dialog>
 
       <Footer />
+      <BottomNav />
     </section>
   </div>
 </template>
@@ -129,11 +130,13 @@
 import { defineComponent } from "@vue/composition-api";
 import NavbarDetail from "@/components/NavbarDetail.vue";
 import Footer from "@/components/Footer.vue";
+import BottomNav from "@/components/BottomNav.vue";
 
 export default defineComponent({
   components: {
     NavbarDetail,
     Footer,
+    BottomNav,
   },
   data() {
     return {
@@ -204,7 +207,6 @@ export default defineComponent({
       const formatter = new Intl.NumberFormat("id-ID");
       return formatter.format(value);
     },
-
     openModal() {
       let modal = document.getElementById("modalResult");
       modal.showModal();
@@ -289,12 +291,16 @@ export default defineComponent({
         totalInstallments: this.totalInstallments,
         principalInstallments: this.principalInstallments,
         totalInterest: this.totalInterest,
-        interestPercentage: this.interestPercentage
-      }
+        interestPercentage: this.interestPercentage,
+      };
 
-      localStorage.setItem("dataInputKpr", JSON.stringify(dataInputKpr));
-      localStorage.setItem("resultDataKpr", JSON.stringify(resultDataKpr));
-      
+      const combinedKprData = {
+        ...dataInputKpr,
+        ...resultDataKpr,
+      };
+
+
+      localStorage.setItem("dataKPR", JSON.stringify(combinedKprData));
     },
   },
 });
