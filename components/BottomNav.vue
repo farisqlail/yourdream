@@ -2,7 +2,7 @@
   <div>
     <div class="bottom-nav">
       <div class="col-1" @click="toHome">
-        <div v-if="this.$route.path !== '/'">
+        <div v-if="currentRoute !== '/'">
           <svg
             width="25px"
             height="25px"
@@ -58,7 +58,7 @@
         <span :class="{ active: isActiveRoute('/') }">Beranda</span>
       </div>
       <div class="col-2" @click="toStrategy">
-        <div v-if="this.$route.path !== '/strategy'">
+        <div v-if="currentRoute !== '/strategy'">
           <svg
             width="25px"
             height="25px"
