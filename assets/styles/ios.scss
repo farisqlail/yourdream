@@ -21,7 +21,7 @@ body {
 
   .footer {
     padding: 0;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     padding-top: 20px;
   }
 }
@@ -42,10 +42,11 @@ body {
     min-height: 100vh;
     flex-grow: 1;
     position: relative;
+    overflow-x: hidden;
 
     .carousel {
       display: flex;
-      overflow-x: auto; /* Atau overflow-x: scroll; */
+      overflow-x: visible; /* Atau overflow-x: scroll; */
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       height: auto;

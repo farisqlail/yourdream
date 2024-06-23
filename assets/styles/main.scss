@@ -45,13 +45,15 @@ body {
     position: relative;
     width: 480px;
     max-width: 480px;
+    overflow-x: hidden;
 
     .carousel {
       display: flex;
-      overflow-x: auto; /* Atau overflow-x: scroll; */
+      overflow-x: visible; /* Atau overflow-x: scroll; */
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       height: auto;
+      padding-right: -20px;
 
       .carousel-item {
         flex: 0 0 auto;
