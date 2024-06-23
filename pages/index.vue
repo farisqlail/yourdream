@@ -133,7 +133,7 @@
       </div>
 
       <Footer />
-      <!-- <BottomNav /> -->
+      <BottomNav />
     </section>
   </div>
 </template>
