@@ -42,11 +42,9 @@ body {
     min-height: 100vh;
     flex-grow: 1;
     position: relative;
-    overflow-x: hidden;
 
     .carousel {
       display: flex;
-      overflow-x: visible; /* Atau overflow-x: scroll; */
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       height: auto;

@@ -41,11 +41,9 @@ body {
     flex-grow: 1;
     position: relative;
     width: 100%;
-    overflow-x: hidden;
 
     .carousel {
       display: flex;
-      overflow-x: visible; /* Atau overflow-x: scroll; */
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       height: auto;
