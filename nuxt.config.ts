@@ -33,6 +33,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: 'https://instagram.fsub8-1.fna.fbcdn.net/v/t51.2885-19/403828377_374385221919274_5333529820649623523_n.jpg?_nc_ht=instagram.fsub8-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=vhqf_IZkYRUQ7kNvgH33MAk&edm=AEhyXUkBAAAA&ccb=7-5&oh=00_AYDpPgVQ62ptnmpcD6QREkcHvNq76rp4ZWFNKJgXtdcr7w&oe=667E1A19&_nc_sid=cf751b' }
       ],
+      meta: [
+        { name: 'theme-color', content: '#ffffff' } // Ganti dengan warna yang diinginkan
+      ]
     }
   },
 
