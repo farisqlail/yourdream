@@ -1,7 +1,7 @@
 <template>
   <div class="navbar flex justify-between">
     <div>
-      <nuxt-link to="/" class="btn text-xl p-0 btn-title">
+      <nuxt-link :to="link" class="btn text-xl p-0 btn-title">
         <img src="~/assets/icons/left-arrow.png" class="w-5" alt="" srcset="" />
       </nuxt-link>
     </div>
@@ -48,6 +48,7 @@ import { defineComponent } from "@vue/composition-api";
 export default defineComponent({
   props: {
     title: String,
+    link: String,
   },
 });
 </script>

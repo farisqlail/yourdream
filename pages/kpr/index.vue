@@ -4,7 +4,7 @@
   </Head>
   <div class="frame">
     <section id="page">
-      <NavbarDetail :title="titelNav" />
+      <NavbarDetail :title="titelNav" :link="urlPath" />
 
       <!-- Property Price -->
       <div class="form-group">
@@ -140,6 +140,7 @@ export default defineComponent({
   },
   data() {
     return {
+      urlPath: "/",
       // Data yang diperlukan untuk hasil perhitungan
       showResults: false,
       totalInterest: 0,
@@ -298,7 +299,6 @@ export default defineComponent({
         ...dataInputKpr,
         ...resultDataKpr,
       };
-
 
       localStorage.setItem("dataKPR", JSON.stringify(combinedKprData));
     },

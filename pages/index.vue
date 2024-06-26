@@ -48,7 +48,7 @@
           <h5>Kunjungi juga</h5>
         </div>
 
-        <div class="carousel rounded-box mt-3">
+        <div class="carousel mt-3">
           <div class="carousel-item">
             <nuxt-link
               to="https://www.instagram.com/p/C3Ct7rHSv-n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="

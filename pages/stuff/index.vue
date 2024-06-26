@@ -1,7 +1,7 @@
 <template>
   <div class="frame">
     <section id="page">
-      <NavbarDetail :title="titelNav" />
+      <NavbarDetail :title="titelNav" :link="urlPath" />
 
       <!-- Input Price -->
       <div class="form-group">
@@ -111,6 +111,7 @@ export default defineComponent({
   },
   data() {
     return {
+      urlPath: "/",
       hargaBarang: 0,
       investasiTiapBulan: 0,
       uangSekarang: 0,
@@ -121,7 +122,7 @@ export default defineComponent({
       showResults: false,
       targetBulan: "",
       annualInterestRate: "",
-      titelNav: "Barang Impian"
+      titelNav: "Barang Impian",
     };
   },
   computed: {
