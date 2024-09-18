@@ -3,7 +3,7 @@
     <title>Your Dream - Hitung KPR</title>
   </Head>
   <div class="frame">
-    <section id="page">
+    <section id="page" class="dark:bg-gray-900 bg-[#f4f4f4] dark:text-white">
       <NavbarDetail :title="titelNav" :link="urlPath" />
 
       <!-- Property Price -->

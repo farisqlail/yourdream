@@ -2,7 +2,7 @@
   <div class="footer-wrapper">
     <footer class="footer p-5 flex justify-between">
       <div class="flex self-center">
-        <h6 class="footer-title">LailDev</h6>
+        <h6 class="footer-title text-[#2d2d2e] dark:text-white">LailDev</h6>
       </div>
       <div class="flex">
         <h6 class="footer-title">Social</h6>

@@ -2,8 +2,8 @@
   <Head>
     <title>Your Dream</title>
   </Head>
-  <div class="frame">
-    <section id="page">
+  <div class="frame dark:bg-gray-900">
+    <section id="page" class="dark:bg-gray-900 bg-[#f4f4f4] dark:text-white">
       <Navbar />
       <div class="banner">
         <img src="~/assets/images/banner.png" class="img-hero" alt="" />
@@ -49,7 +49,7 @@
         </div>
 
         <div class="carousel mt-3">
-          <div class="carousel-item">
+          <div class="carousel-item dark:text-white text-[#2d2d2e]">
             <nuxt-link
               to="https://www.instagram.com/p/C3Ct7rHSv-n/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
               target="blank"

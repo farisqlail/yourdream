@@ -2,20 +2,33 @@
   <div class="navbar flex justify-between">
     <div>
       <nuxt-link :to="link" class="btn text-xl p-0 btn-title">
-        <img src="~/assets/icons/left-arrow.png" class="w-5" alt="" srcset="" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          class="fill-[#2d2d2e] dark:fill-white w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
       </nuxt-link>
     </div>
 
-    <div class="title text-center">
+    <div class="title text-center dark:text-white">
       <span class="font-semibold">{{ title }}</span>
     </div>
 
-    <div>
+    <div class="flex-none">
       <label class="swap swap-rotate">
         <!-- this hidden checkbox controls the state -->
-        <input type="checkbox" class="theme-controller" value="synthwave" />
+        <input type="checkbox" @change="toggleTheme" :checked="isDark" />
 
-        <!-- sun icon -->
+        <!-- sun icon (for light mode) -->
         <svg
           class="swap-on fill-current w-8 h-8"
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +39,7 @@
           />
         </svg>
 
-        <!-- moon icon -->
+        <!-- moon icon (for dark mode) -->
         <svg
           class="swap-off fill-current w-8 h-8"
           xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +62,34 @@ export default defineComponent({
   props: {
     title: String,
     link: String,
+  },
+  data() {
+    return {
+      isDark: false,
+    };
+  },
+  mounted() {
+    // Cek apakah ada preferensi dark mode yang tersimpan di localStorage
+    const savedTheme = localStorage.getItem("theme");
+    this.isDark = savedTheme === "dark";
+
+    if (this.isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  },
+  methods: {
+    toggleTheme() {
+      this.isDark = !this.isDark;
+      if (this.isDark) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+    },
   },
 });
 </script>
