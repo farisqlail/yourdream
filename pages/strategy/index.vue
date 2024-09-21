@@ -3,23 +3,31 @@
     <title>Your Dream - Strategiku</title>
   </Head>
   <div class="frame">
-    <section id="page">
+    <section id="page" class="dark:bg-gray-900 bg-[#f4f4f4] dark:text-white">
       <NavbarDetail :title="titelNav" :link="urlPath" />
 
-      <div v-if="dataKpr" class="list-kpr">
-        <div class="items" @click="goToKpr()">
+      <div v-if="dataKpr !== null" class="list-kpr">
+        <div class="items dark:bg-gray-800" @click="goToKpr()">
           {{ dataKpr }}
           <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 24 24"
             fill="none"
+            height="50px"
+            width="50px"
+            version="1.1"
+            id="XMLID_287_"
             xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 24 24"
+            xml:space="preserve"
+            class="fill-[#2d2d2e] dark:fill-white w-5 h-5 icon"
           >
-            <path
-              d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
-              fill="#0F0F0F"
-            />
+            <g id="next">
+              <g>
+                <polygon
+                  points="6.8,23.7 5.4,22.3 15.7,12 5.4,1.7 6.8,0.3 18.5,12 		"
+                />
+              </g>
+            </g>
           </svg>
         </div>
       </div>
@@ -28,7 +36,6 @@
         <span>Belum ada strategi, yuk bikin</span>
       </div>
 
-      <Footer />
       <BottomNav />
     </section>
   </div>
@@ -50,7 +57,7 @@ export default defineComponent({
     return {
       titelNav: "Strategiku",
       dataKpr: {},
-      urlPath:  "/"
+      urlPath: "/",
     };
   },
   mounted() {
@@ -63,9 +70,9 @@ export default defineComponent({
         this.dataKpr = "KPR";
       }
     },
-    goToKpr(){
-      return this.$router.push("/strategy/kpr")
-    }
+    goToKpr() {
+      return this.$router.push("/strategy/kpr");
+    },
   },
 });
 </script>

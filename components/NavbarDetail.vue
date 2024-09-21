@@ -3,17 +3,25 @@
     <div>
       <nuxt-link :to="link" class="btn text-xl p-0 btn-title">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-          class="fill-[#2d2d2e] dark:fill-white w-5 h-5"
+          version="1.1"
+          baseProfile="tiny"
+          id="Layer_1"
+          xmlns:x="&ns_extend;"
+          xmlns:i="&ns_ai;"
+          xmlns:graph="&ns_graphs;"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+          width="50px"
+          height="50px"
+          viewBox="0 0 42 42"
+          xml:space="preserve"
+          class="fill-[#2d2d2e] dark:fill-white w-5 h-5 icon"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 19l-7-7 7-7"
+          <polygon
+            fill-rule="evenodd"
+            points="31,38.32 13.391,21 31,3.68 28.279,1 8,21.01 28.279,41 "
           />
         </svg>
       </nuxt-link>

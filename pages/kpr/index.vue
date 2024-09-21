@@ -80,17 +80,17 @@
       </div>
 
       <!-- Modal -->
-      <dialog id="modalResult" class="modal">
-        <div class="modal-box">
+      <dialog id="modalResult" class="modal ">
+        <div class="modal-box dark:bg-gray-800 bg-[#f4f4f4] dark:text-white">
           <h3 class="font-bold text-lg">Analisa Hasil Perhitungan KPR</h3>
           <!-- Tampilkan hasil perhitungan KPR di dalam modal -->
-          <div class="modal-content">
+          <div class="modal-content ">
             <!-- Alert -->
             <div v-if="alertMessage" :class="['alert', alertType]">
               <span>{{ alertMessage }}</span>
             </div>
 
-            <div class="total-bunga">
+            <div class="total-bunga dark:bg-gray-900 bg-[#e6e6e6] dark:text-white">
               <p>
                 Total bunga KPR yang harus kamu bayarkan adalah
                 <strong>Rp{{ formatCurrency(totalInterest) }}</strong> setara
@@ -99,7 +99,7 @@
               </p>
             </div>
 
-            <div class="cicilan-payment">
+            <div class="cicilan-payment dark:bg-gray-900 bg-[#e6e6e6] dark:text-white">
               <p>
                 Cicilan Pokok KPRmu
                 <strong>Rp{{ formatCurrency(principalInstallments) }}</strong>
@@ -120,8 +120,7 @@
         </div>
       </dialog>
 
-      <Footer />
-      <BottomNav />
+      <!-- <BottomNav /> -->
     </section>
   </div>
 </template>

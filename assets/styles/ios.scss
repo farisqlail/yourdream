@@ -35,7 +35,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 26px;
-    background: #f4f4f4;
     padding-left: 20px;
     padding-right: 20px;
     width: 100%;
@@ -50,7 +49,7 @@ body {
       height: auto;
       margin-right: -20px;
       padding-right: 20px;
-      
+
       .carousel-item {
         flex: 0 0 auto;
         width: 300px; /* Atur lebar sesuai kebutuhan */
@@ -162,7 +161,6 @@ body {
 
       .items {
         width: 100%;
-        background-color: #f0f0f0;
         padding: 15px;
         border-radius: 10px;
         font-size: 14px;

@@ -132,8 +132,6 @@
           </div>
         </div>
       </div>
-
-      <Footer />
       <BottomNav />
     </section>
   </div>
