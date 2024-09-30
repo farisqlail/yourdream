@@ -173,7 +173,6 @@ export default defineComponent({
         return this.formatCurrency(this.propertyPrice);
       },
       set(value) {
-        // Menghapus karakter non-digit dari nilai input
         const parsedValue = value.replace(/\D/g, "");
         this.propertyPrice = parseInt(parsedValue);
       },
@@ -184,7 +183,6 @@ export default defineComponent({
         return this.formatCurrency(this.monthlyIncome);
       },
       set(value) {
-        // Menghapus karakter non-digit dari nilai input
         const parsedValue = value.replace(/\D/g, "");
         this.monthlyIncome = parseInt(parsedValue);
       },

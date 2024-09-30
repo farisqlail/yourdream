@@ -26,20 +26,11 @@
           </div>
           Barang
         </div>
-        <div class="item">
-          <div class="icon-disabled">
-            <img src="~/assets/icons/properti.png" class="w-20" alt="" />
+        <div class="item" @click="budgeting">
+          <div class="icon">
+            <img src="~/assets/icons/wallet.png" class="w-20" alt="" />
           </div>
-          DP Properti
-        </div>
-      </div>
-
-      <div class="row-item flex justify-between mt-3">
-        <div class="item">
-          <div class="icon-disabled">
-            <img src="~/assets/icons/menikah.png" class="w-20" alt="" />
-          </div>
-          Menikah
+          Budgeting
         </div>
       </div>
 
@@ -161,6 +152,9 @@ export default {
     },
     stuff() {
       this.$router.push("/stuff");
+    },
+    budgeting() {
+      this.$router.push("/budgeting");
     },
   },
 };
